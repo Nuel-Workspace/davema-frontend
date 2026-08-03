@@ -141,7 +141,7 @@
   }
   .hero-name{
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-    font-size: clamp(56px, 11vw, 148px);
+    font-size: clamp(72px, 16vw, 148px);
     font-weight: 800; letter-spacing: -3px; line-height:0.9;
     color: var(--text);
   }
@@ -173,6 +173,10 @@
 
   @media (max-width: 860px){
     .hero-inner{ grid-template-columns: 1fr; }
+  }
+
+  @media (max-width: 640px){
+    nav{ padding-left: 18px; padding-right: 18px; }
   }
 
   section:not(.hero){ border-bottom: 1px solid var(--line); position:relative; }

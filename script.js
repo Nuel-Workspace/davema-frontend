@@ -4,16 +4,25 @@ document.addEventListener('DOMContentLoaded', () => {
   const overlayClose = document.getElementById('overlayClose');
 
   if (menuToggle && overlay) {
-    menuToggle.addEventListener('click', () => overlay.classList.add('open'));
+    menuToggle.addEventListener('click', () => {
+      overlay.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    });
   }
 
   if (overlayClose && overlay) {
-    overlayClose.addEventListener('click', () => overlay.classList.remove('open'));
+    overlayClose.addEventListener('click', () => {
+      overlay.classList.remove('open');
+      document.body.style.overflow = '';
+    });
   }
 
   if (overlay) {
     overlay.querySelectorAll('a').forEach(a => {
-      a.addEventListener('click', () => overlay.classList.remove('open'));
+      a.addEventListener('click', () => {
+        overlay.classList.remove('open');
+        document.body.style.overflow = '';
+      });
     });
   }
 
