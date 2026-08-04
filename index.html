@@ -28,6 +28,9 @@
 </head>
 <body>
 
+<div id="scroll-progress"></div>
+<div id="cursor-glow"></div>
+
 <nav>
   <div class="logo">
     <span class="mark">
@@ -75,14 +78,15 @@
     </div>
     <div class="col">
       <span class="label">Socials</span>
-      <a href="#" class="social-link"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M18.9 2H22l-7.6 8.7L23.3 22h-6.9l-5.4-7-6.2 7H1.4l8.1-9.3L1 2h7l4.9 6.4L18.9 2Zm-1.2 18h1.9L7.4 4H5.4l12.3 16Z"/></svg>X / Twitter</a>
-      <a href="#" class="social-link"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg>Instagram</a>
+      <span class="social-link is-disabled"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M18.9 2H22l-7.6 8.7L23.3 22h-6.9l-5.4-7-6.2 7H1.4l8.1-9.3L1 2h7l4.9 6.4L18.9 2Zm-1.2 18h1.9L7.4 4H5.4l12.3 16Z"/></svg>X / Twitter</span>
+      <span class="social-link is-disabled"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg>Instagram</span>
       <a href="https://wa.me/2348135521394" target="_blank" rel="noopener" class="social-link"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.7-.8-2-.9-.3-.1-.5-.1-.7.1-.2.3-.7.9-.9 1.1-.2.2-.3.2-.6.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.1.2-.3.3-.4.1-.2 0-.4 0-.5s-.7-1.6-.9-2.2c-.2-.5-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.4s1 2.8 1.2 3c.1.2 2 3.1 4.9 4.3.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.5-.1 1.7-.7 2-1.4.2-.6.2-1.2.2-1.3-.1-.1-.3-.2-.6-.3ZM12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2Zm0 18.2c-1.6 0-3.1-.4-4.4-1.2l-.3-.2-3.1.8.8-3-.2-.3A8.2 8.2 0 1 1 12 20.2Z"/></svg>WhatsApp</a>
     </div>
   </div>
 </div>
 
 <section class="hero" id="home">
+  <div class="hero-bg-wrap">
   <svg class="hero-bg" viewBox="0 0 800 800" xmlns="http://www.w3.org/2000/svg">
     <defs>
       <linearGradient id="g1" x1="0" y1="0" x2="1" y2="1">
@@ -112,6 +116,7 @@
       <path d="M700 0 L700 800"/>
     </g>
   </svg>
+  </div>
 
   <div class="hero-inner">
     <div>
@@ -129,11 +134,12 @@
           <span class="dot2 red"></span><span class="dot2 yellow"></span><span class="dot2 green"></span>
           <span>davema — status</span>
         </div>
-        <div class="terminal-body">
-          <div class="l"><span class="prompt">$</span> node hello.js</div>
-          <div class="l"><span class="ok">Hello, world! 👋</span></div>
-          <div class="l">Thanks for stopping by Davema.</div>
-          <div class="l">Let's build something together.</div>
+        <div class="terminal-body" id="terminalBody">
+          <div class="l"><span class="prompt">$</span> <span class="type-target" data-text="node hello.js"></span></div>
+          <div class="l"><span class="ok type-target" data-text="Hello, world! 👋"></span></div>
+          <div class="l"><span class="type-target" data-text="Thanks for stopping by Davema."></span></div>
+          <div class="l"><span class="type-target" data-text="Let's build something together."></span></div>
+          <div class="l"><span class="prompt">$</span> <span class="type-cursor" id="typeCursor"></span></div>
         </div>
       </div>
     </div>
@@ -142,67 +148,73 @@
 
 <section id="services">
   <div class="wrap section-inner">
-    <span class="tag">cat services.log</span>
-    <h2>What we do</h2>
+    <span class="tag reveal">cat services.log</span>
+    <h2 class="reveal">What we do</h2>
     <div class="services-grid">
-      <div class="service">
+      <div class="service stagger-item">
         <div class="idx">01</div>
         <h3>Web Design &amp; Build</h3>
         <p>Full sites from scratch — structure, layout, and content, built to load fast and hold up on mobile.</p>
       </div>
-      <div class="service">
+      <div class="service stagger-item">
         <div class="idx">02</div>
         <h3>Backend &amp; Forms</h3>
         <p>Contact forms, newsletters, and small custom backends that actually deliver mail and store data properly.</p>
       </div>
-      <div class="service">
+      <div class="service stagger-item">
         <div class="idx">03</div>
         <h3>Care &amp; Upkeep</h3>
         <p>Ongoing fixes, content updates, and performance passes after launch — a site is never really "done."</p>
       </div>
     </div>
-    <p class="pricing-note">Every project's scope is different — <a href="#contact">get in touch for a free quote</a>.</p>
+    <p class="pricing-note reveal">Every project's scope is different — <a href="#contact">get in touch for a free quote</a>.</p>
   </div>
 </section>
 
 <section id="process">
   <div class="wrap section-inner">
-    <span class="tag">run process.sh</span>
-    <h2>How a project runs</h2>
+    <span class="tag reveal">run process.sh</span>
+    <h2 class="reveal">How a project runs</h2>
     <ul class="process-list">
-      <li class="process-item"><span class="step">STEP 01</span><span class="name">Discovery</span><span class="desc">We talk through what the site needs to do and who it's for, before any design starts.</span></li>
-      <li class="process-item"><span class="step">STEP 02</span><span class="name">Build</span><span class="desc">Design and development happen together in short rounds, with you seeing progress early.</span></li>
-      <li class="process-item"><span class="step">STEP 03</span><span class="name">Launch</span><span class="desc">We deploy, test on real devices, and hand over anything you need to manage it yourself.</span></li>
-      <li class="process-item"><span class="step">STEP 04</span><span class="name">Support</span><span class="desc">We stay on for fixes and small changes after launch — no disappearing act.</span></li>
+      <li class="process-item stagger-item"><span class="step">STEP 01</span><span class="name">Discovery</span><span class="desc">We talk through what the site needs to do and who it's for, before any design starts.</span></li>
+      <li class="process-item stagger-item"><span class="step">STEP 02</span><span class="name">Build</span><span class="desc">Design and development happen together in short rounds, with you seeing progress early.</span></li>
+      <li class="process-item stagger-item"><span class="step">STEP 03</span><span class="name">Launch</span><span class="desc">We deploy, test on real devices, and hand over anything you need to manage it yourself.</span></li>
+      <li class="process-item stagger-item"><span class="step">STEP 04</span><span class="name">Support</span><span class="desc">We stay on for fixes and small changes after launch — no disappearing act.</span></li>
     </ul>
   </div>
 </section>
 
 <section id="work">
   <div class="wrap section-inner">
-    <span class="tag">ls ./projects</span>
-    <h2>Recent work</h2>
+    <span class="tag reveal">ls ./projects</span>
+    <h2 class="reveal">Recent work</h2>
     <div class="work-list">
-      <a class="work-item" href="https://jarspokschools.com.ng" target="_blank" rel="noopener"><span class="path"><span class="dir">/projects/</span>school-website</span><span class="status">Live</span></a>
-      <div class="work-item"><span class="path"><span class="dir">/projects/</span>client-site-02</span><span class="status">In progress</span></div>
-      <div class="work-item"><span class="path"><span class="dir">/projects/</span>next-build</span><span class="status">Planned</span></div>
+      <a class="work-item stagger-item" href="https://jarspokschools.com.ng" target="_blank" rel="noopener">
+        <span class="work-item-text">
+          <span class="path"><span class="dir">/projects/</span>school-website</span>
+          <span class="work-blurb">A school site with admissions, an about/programs section, and contact and newsletter sign-up for term updates.</span>
+        </span>
+        <span class="status">Live</span>
+      </a>
+      <div class="work-item stagger-item is-pending"><span class="path"><span class="dir">/projects/</span>client-site-02</span><span class="status">In progress</span></div>
+      <div class="work-item stagger-item is-pending"><span class="path"><span class="dir">/projects/</span>next-build</span><span class="status">Planned</span></div>
     </div>
   </div>
 </section>
 
 <section id="about">
   <div class="wrap section-inner">
-    <span class="tag">cat about.txt</span>
-    <h2>About Davema</h2>
+    <span class="tag reveal">cat about.txt</span>
+    <h2 class="reveal">About Davema</h2>
     <div class="about-inner">
-      <div>
+      <div class="reveal">
         <p>Davema is run by two people who build the whole thing ourselves — design, frontend, and backend. No account managers, no handoffs between departments. Whoever you talk to is whoever builds your site.</p>
         <p>We keep a small client list on purpose, so every project gets real attention instead of being one of fifty in a queue.</p>
       </div>
-      <div class="about-stats">
-        <div class="stat"><div class="num">2</div><div class="label">People, no subcontractors</div></div>
-        <div class="stat"><div class="num">100%</div><div class="label">Custom-built, no page builders</div></div>
-        <div class="stat"><div class="num">1</div><div class="label">Point of contact, start to finish</div></div>
+      <div class="about-stats reveal">
+        <div class="stat stagger-item"><div class="num">2</div><div class="label">People, no subcontractors</div></div>
+        <div class="stat stagger-item"><div class="num">100%</div><div class="label">Custom-built, no page builders</div></div>
+        <div class="stat stagger-item"><div class="num">1</div><div class="label">Point of contact, start to finish</div></div>
       </div>
     </div>
   </div>
@@ -210,9 +222,9 @@
 
 <section id="contact">
   <div class="wrap section-inner">
-    <span class="tag">send message.txt</span>
-    <h2>Start a project</h2>
-    <div class="contact-inner">
+    <span class="tag reveal">send message.txt</span>
+    <h2 class="reveal">Start a project</h2>
+    <div class="contact-inner reveal">
       <p style="color:var(--muted); font-size:15px;">Tell us a bit about what you need. We reply within a day or two.</p>
 <form id="contactForm">
   <input type="checkbox" name="botcheck" id="botcheck" style="display: none;" tabindex="-1" autocomplete="off">
@@ -271,8 +283,8 @@
     <div class="footer-col">
       <span class="footer-heading">Contact</span>
       <a class="email" href="mailto:davema005@gmail.com">davema005@gmail.com</a>
-      <a href="#" class="social-link"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M18.9 2H22l-7.6 8.7L23.3 22h-6.9l-5.4-7-6.2 7H1.4l8.1-9.3L1 2h7l4.9 6.4L18.9 2Zm-1.2 18h1.9L7.4 4H5.4l12.3 16Z"/></svg>X / Twitter</a>
-      <a href="#" class="social-link"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg>Instagram</a>
+      <span class="social-link is-disabled"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M18.9 2H22l-7.6 8.7L23.3 22h-6.9l-5.4-7-6.2 7H1.4l8.1-9.3L1 2h7l4.9 6.4L18.9 2Zm-1.2 18h1.9L7.4 4H5.4l12.3 16Z"/></svg>X / Twitter</span>
+      <span class="social-link is-disabled"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg>Instagram</span>
       <a href="https://wa.me/2348135521394" target="_blank" rel="noopener" class="social-link"><svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M17.5 14.4c-.3-.1-1.7-.8-2-.9-.3-.1-.5-.1-.7.1-.2.3-.7.9-.9 1.1-.2.2-.3.2-.6.1-.3-.1-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.1.2-.3.3-.4.1-.2 0-.4 0-.5s-.7-1.6-.9-2.2c-.2-.5-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.4s1 2.8 1.2 3c.1.2 2 3.1 4.9 4.3.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.5-.1 1.7-.7 2-1.4.2-.6.2-1.2.2-1.3-.1-.1-.3-.2-.6-.3ZM12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2Zm0 18.2c-1.6 0-3.1-.4-4.4-1.2l-.3-.2-3.1.8.8-3-.2-.3A8.2 8.2 0 1 1 12 20.2Z"/></svg>WhatsApp</a>
     </div>
   </div>
